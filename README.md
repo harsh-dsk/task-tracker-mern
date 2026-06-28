@@ -1,3 +1,350 @@
+# 🚀 TaskFlow
+
+A modern full-stack task management application built with the **MERN Stack** that helps users create, organize, and track tasks efficiently through a clean, responsive interface.
+
+TaskFlow focuses on simplicity, speed, and productivity while showcasing production-ready full-stack development practices.
+
+---
+
+## 🌐 Live Demo
+
+**Frontend:** [task-tracker-mern-fawn.vercel.app](https://task-tracker-mern-fawn.vercel.app/)
+
+**Backend API:** [task-tracker-mern-a0qd.onrender.com](https://task-tracker-mern-a0qd.onrender.com)
+
+---
+
+## 📸 Preview
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### Create Task
+
+![Create Task](./screenshots/create-task.png)
+
+---
+
+# ✨ Features
+
+## Task Management
+
+- Create new tasks
+- Edit existing tasks
+- Delete tasks with confirmation
+- Update task status
+- Set task priority
+- Add optional descriptions
+- Due date support
+
+---
+
+## Search & Filtering
+
+- Instant task search
+- Filter by status
+- Filter by priority
+- Sort by:
+  - Latest
+  - Oldest
+  - Due Date
+
+---
+
+## User Experience
+
+- Responsive design
+- Dark / Light mode
+- Smooth animations
+- Toast notifications
+- Loading states
+- Empty state illustrations
+- Real-time UI updates
+- Data persists after refresh
+
+---
+
+## Security & Validation
+
+- Client-side validation
+- Server-side validation
+- MongoDB schema validation
+- Helmet security headers
+- Express Rate Limiting
+- Error handling middleware
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React
+- Vite
+- Tailwind CSS
+- Axios
+- React Hot Toast
+- Lucide React Icons
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Mongoose
+- Helmet
+- Express Rate Limit
+- dotenv
+- CORS
+
+## Deployment
+
+- Vercel
+- Render
+- MongoDB Atlas
+
+---
+
+# 📁 Project Structure
+
+```
+TaskFlow
+│
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── context/
+│   │   └── utils/
+│   │
+│   └── public/
+│
+├── server/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   └── server.js
+│
+└── README.md
+```
+
+---
+
+# 🚀 Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/harsh-dsk/taskflow.git
+
+cd taskflow
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd server
+
+npm install
+```
+
+Create a `.env`
+
+```env
+PORT=5000
+
+NODE_ENV=development
+
+MONGO_URI=your_mongodb_connection_string
+
+CLIENT_ORIGIN=http://localhost:5173
+```
+
+Run the backend
+
+```bash
+npm run dev
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd client
+
+npm install
+```
+
+Create a `.env`
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+Run the frontend
+
+```bash
+npm run dev
+```
+
+Open
+
+```
+http://localhost:5173
+```
+
+---
+
+# 📡 API Endpoints
+
+## Get All Tasks
+
+```
+GET /api/tasks
+```
+
+Supports
+
+```
+search
+
+status
+
+priority
+
+sort
+```
+
+---
+
+## Create Task
+
+```
+POST /api/tasks
+```
+
+Example
+
+```json
+{
+  "title": "Complete README",
+  "description": "Finish project documentation",
+  "priority": "High",
+  "status": "Pending",
+  "dueDate": "2026-07-01"
+}
+```
+
+---
+
+## Update Task
+
+```
+PUT /api/tasks/:id
+```
+
+---
+
+## Delete Task
+
+```
+DELETE /api/tasks/:id
+```
+
+---
+
+# 🌍 Deployment
+
+### Frontend
+
+Deploy on **Vercel**
+
+### Backend
+
+Deploy on **Render**
+
+### Database
+
+Use **MongoDB Atlas**
+
+---
+
+# 🚧 Future Improvements
+
+- User Authentication
+- Multiple Workspaces
+- Drag & Drop Kanban Board
+- Calendar View
+- Task Labels & Tags
+- Email Reminders
+- File Attachments
+- Team Collaboration
+- Activity Timeline
+
+---
+
+# 📚 What I Learned
+
+This project helped strengthen my understanding of:
+
+- REST API development
+- Express.js architecture
+- MongoDB & Mongoose
+- React Hooks
+- Context API
+- CRUD Operations
+- State Management
+- API Integration
+- Full-stack deployment
+- Environment variable management
+- Building production-ready applications
+
+---
+
+# 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+Feel free to fork the repository and submit a Pull Request.
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
+
+It helps others discover the project and motivates future improvements.
+
+---
+
+# 👨‍💻 Author
+
+### Harshdeep Singh Khanuja
+
+🎓 B.Tech Electronics & Telecommunication — SGSITS Indore
+
+**GitHub**
+
+https://github.com/harsh-dsk
+
+**LinkedIn**
+
+https://linkedin.com/in/harshdeep-singh-khanuja
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT Licens
+
 # TaskFlow — Full-Stack MERN Task Manager
 
 ![TaskFlow Banner](https://img.shields.io/badge/Stack-MERN-61dafb?style=for-the-badge&logo=react)
@@ -28,23 +375,25 @@ A production-ready, full-stack task management application built with the **MERN
 ## 🛠 Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|---|---|
+
+| Technology        | Purpose                   |
+| ----------------- | ------------------------- |
 | React 19 + Vite 8 | UI framework + build tool |
-| Tailwind CSS 3 | Utility-first styling |
-| Axios | HTTP client |
-| React Hot Toast | Toast notifications |
-| Lucide React | Icon set |
+| Tailwind CSS 3    | Utility-first styling     |
+| Axios             | HTTP client               |
+| React Hot Toast   | Toast notifications       |
+| Lucide React      | Icon set                  |
 
 ### Backend
-| Technology | Purpose |
-|---|---|
-| Node.js + Express | REST API server |
-| MongoDB Atlas | Cloud database |
-| Mongoose | ODM / schema validation |
-| Helmet | HTTP security headers |
-| express-rate-limit | API rate limiting |
-| dotenv | Environment variable loading |
+
+| Technology         | Purpose                      |
+| ------------------ | ---------------------------- |
+| Node.js + Express  | REST API server              |
+| MongoDB Atlas      | Cloud database               |
+| Mongoose           | ODM / schema validation      |
+| Helmet             | HTTP security headers        |
+| express-rate-limit | API rate limiting            |
+| dotenv             | Environment variable loading |
 
 ---
 
@@ -176,18 +525,18 @@ Open **http://localhost:5173** in your browser.
 
 ### Backend (`server/.env`)
 
-| Variable | Required | Description |
-|---|---|---|
-| `PORT` | No | Server port (default: `5000`) |
-| `NODE_ENV` | No | `development` or `production` |
-| `MONGO_URI` | **Yes** | Full MongoDB Atlas connection string |
-| `CLIENT_ORIGIN` | **Yes** | Frontend URL(s) for CORS (comma-separated) |
+| Variable        | Required | Description                                |
+| --------------- | -------- | ------------------------------------------ |
+| `PORT`          | No       | Server port (default:`5000`)               |
+| `NODE_ENV`      | No       | `development` or `production`              |
+| `MONGO_URI`     | **Yes**  | Full MongoDB Atlas connection string       |
+| `CLIENT_ORIGIN` | **Yes**  | Frontend URL(s) for CORS (comma-separated) |
 
 ### Frontend (`client/.env`)
 
-| Variable | Required | Description |
-|---|---|---|
-| `VITE_API_URL` | **Yes** | Backend base URL (e.g. `http://localhost:5000`) |
+| Variable       | Required | Description                                    |
+| -------------- | -------- | ---------------------------------------------- |
+| `VITE_API_URL` | **Yes**  | Backend base URL (e.g.`http://localhost:5000`) |
 
 ---
 
@@ -197,34 +546,34 @@ Open **http://localhost:5173** in your browser.
 
 ### Tasks
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/tasks` | Fetch all tasks (supports query params) |
-| `POST` | `/tasks` | Create a new task |
-| `PUT` | `/tasks/:id` | Update a task by ID |
-| `DELETE` | `/tasks/:id` | Delete a task by ID |
+| Method   | Endpoint     | Description                             |
+| -------- | ------------ | --------------------------------------- |
+| `GET`    | `/tasks`     | Fetch all tasks (supports query params) |
+| `POST`   | `/tasks`     | Create a new task                       |
+| `PUT`    | `/tasks/:id` | Update a task by ID                     |
+| `DELETE` | `/tasks/:id` | Delete a task by ID                     |
 
 ### GET /tasks — Query Parameters
 
-| Param | Type | Description |
-|---|---|---|
-| `search` | `string` | Full-text search on title/description |
-| `status` | `string` | `Pending` or `In Progress` or `Completed` |
-| `priority` | `string` | `Low` or `Medium` or `High` |
-| `sort` | `string` | `latest` (default) or `oldest` or `dueDate` |
+| Param      | Type     | Description                                 |
+| ---------- | -------- | ------------------------------------------- |
+| `search`   | `string` | Full-text search on title/description       |
+| `status`   | `string` | `Pending` or `In Progress` or `Completed`   |
+| `priority` | `string` | `Low` or `Medium` or `High`                 |
+| `sort`     | `string` | `latest` (default) or `oldest` or `dueDate` |
 
 ### Task Schema
 
 ```json
 {
-  "_id":         "ObjectId",
-  "title":       "string (required, 3-100 chars)",
+  "_id": "ObjectId",
+  "title": "string (required, 3-100 chars)",
   "description": "string (optional, max 1000 chars)",
-  "priority":    "Low | Medium | High",
-  "status":      "Pending | In Progress | Completed",
-  "dueDate":     "ISO date string | null",
-  "createdAt":   "ISO date string",
-  "updatedAt":   "ISO date string"
+  "priority": "Low | Medium | High",
+  "status": "Pending | In Progress | Completed",
+  "dueDate": "ISO date string | null",
+  "createdAt": "ISO date string",
+  "updatedAt": "ISO date string"
 }
 ```
 
@@ -263,8 +612,8 @@ Open **http://localhost:5173** in your browser.
 > Add your own screenshots here after deploying.
 
 | Dashboard (Light) | Dashboard (Dark) |
-|---|---|
-| *(screenshot)* | *(screenshot)* |
+| ----------------- | ---------------- |
+| _(screenshot)_    | _(screenshot)_   |
 
 ---
 
