@@ -57,15 +57,15 @@ export const todayInputDate = () => {
 // ── Priority helpers ────────────────────────────────────────────────────────
 
 export const priorityConfig = {
-  High:   { label: "High",   color: "bg-red-100    text-red-700    dark:bg-red-900/40    dark:text-red-400",    dot: "bg-red-500"    },
-  Medium: { label: "Medium", color: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-400", dot: "bg-yellow-500" },
-  Low:    { label: "Low",    color: "bg-green-100  text-green-700  dark:bg-green-900/40  dark:text-green-400",  dot: "bg-green-500"  },
+  High:   { label: "High",   color: "border border-red-200/55 text-red-600 bg-red-50/30 dark:border-red-950/60 dark:text-red-400 dark:bg-red-950/10", dot: "bg-red-500" },
+  Medium: { label: "Medium", color: "border border-amber-200/55 text-amber-700 bg-amber-50/20 dark:border-amber-950/60 dark:text-amber-400 dark:bg-amber-950/10", dot: "bg-amber-500" },
+  Low:    { label: "Low",    color: "border border-zinc-200 text-zinc-650 bg-zinc-50 dark:border-zinc-800 dark:text-zinc-400 dark:bg-zinc-900/30", dot: "bg-zinc-400" },
 };
 
 export const statusConfig = {
-  "Pending":     { label: "Pending",     color: "bg-slate-100  text-slate-600  dark:bg-slate-800    dark:text-slate-400",  dot: "bg-slate-400"  },
-  "In Progress": { label: "In Progress", color: "bg-blue-100   text-blue-700   dark:bg-blue-900/40   dark:text-blue-400",   dot: "bg-blue-500"   },
-  "Completed":   { label: "Completed",   color: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400", dot: "bg-emerald-500" },
+  "Pending":     { label: "Pending",     color: "border border-zinc-200 text-zinc-500 bg-zinc-50/50 dark:border-zinc-800 dark:text-zinc-400 dark:bg-zinc-900/20", dot: "bg-zinc-400" },
+  "In Progress": { label: "In Progress", color: "border border-blue-200/55 text-blue-600 bg-blue-50/30 dark:border-blue-950/60 dark:text-blue-400 dark:bg-blue-950/10", dot: "bg-blue-500" },
+  "Completed":   { label: "Completed",   color: "border border-emerald-200/55 text-emerald-600 bg-emerald-50/20 dark:border-emerald-950/60 dark:text-emerald-400 dark:bg-emerald-950/10", dot: "bg-emerald-500" },
 };
 
 /**

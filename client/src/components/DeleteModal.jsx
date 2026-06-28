@@ -61,7 +61,7 @@ const DeleteModal = () => {
     /* Backdrop */
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4
-                 bg-black/50 backdrop-blur-sm animate-fade-in"
+                 bg-black/40 backdrop-blur-sm animate-fade-in"
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
       role="dialog"
       aria-modal="true"
@@ -70,58 +70,49 @@ const DeleteModal = () => {
       {/* Panel */}
       <div
         ref={panelRef}
-        className="card shadow-modal w-full max-w-md animate-scale-in"
+        className="card bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-xl w-full max-w-sm animate-scale-in rounded-lg"
         aria-describedby="delete-modal-desc"
       >
         {/* Header */}
-        <div className="flex items-start justify-between p-6 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl
-                            bg-red-100 dark:bg-red-900/30 flex-shrink-0">
-              <AlertTriangle size={20} className="text-red-600 dark:text-red-400" />
-            </div>
-            <div>
-              <h2
-                id="delete-modal-title"
-                className="text-base font-semibold text-slate-900 dark:text-white"
-              >
-                Delete Task
-              </h2>
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-                This action cannot be undone
-              </p>
-            </div>
+        <div className="flex items-center justify-between p-4 pb-2.5 border-b divider">
+          <div className="flex items-center gap-2">
+            <AlertTriangle size={14} className="text-red-500" />
+            <h2
+              id="delete-modal-title"
+              className="text-xs font-semibold text-zinc-900 dark:text-zinc-50"
+            >
+              Delete Task
+            </h2>
           </div>
           <button
             id="delete-modal-close"
             onClick={handleClose}
             disabled={loading}
-            className="btn-ghost p-1.5 -mt-1 -mr-1 rounded-lg"
+            className="btn-ghost p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
             aria-label="Close"
           >
-            <X size={16} />
+            <X size={14} />
           </button>
         </div>
 
         {/* Body */}
-        <div className="px-6 pb-6">
-          <p id="delete-modal-desc" className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <div className="p-4">
+          <p id="delete-modal-desc" className="text-xs text-zinc-500 dark:text-zinc-400 leading-normal">
             Are you sure you want to delete{" "}
-            <span className="font-semibold text-slate-900 dark:text-white">
+            <span className="font-semibold text-zinc-850 dark:text-zinc-200">
               "{taskToDelete.title}"
             </span>
-            ? This will permanently remove it from your task list.
+            ? This action cannot be undone.
           </p>
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end gap-3 px-6 py-4
-                        border-t divider">
+        <div className="flex items-center justify-end gap-2 p-3 border-t divider bg-zinc-50/50 dark:bg-zinc-900/10">
           <button
             id="delete-modal-cancel"
             onClick={handleClose}
             disabled={loading}
-            className="btn-secondary"
+            className="btn-secondary h-8 py-0 px-3.5"
           >
             Cancel
           </button>
@@ -129,12 +120,9 @@ const DeleteModal = () => {
             id="delete-modal-confirm"
             onClick={handleConfirm}
             disabled={loading}
-            className="btn-danger min-w-[100px]"
+            className="btn-danger min-w-[80px] h-8 py-0 px-3.5"
           >
-            {loading
-              ? <LoadingSpinner size="sm" />
-              : "Delete Task"
-            }
+            {loading ? <LoadingSpinner size="sm" /> : "Delete"}
           </button>
         </div>
       </div>

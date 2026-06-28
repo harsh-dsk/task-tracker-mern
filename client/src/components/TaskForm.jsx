@@ -187,36 +187,32 @@ const TaskForm = () => {
     /* Backdrop */
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4
-                 bg-black/50 backdrop-blur-sm animate-fade-in"
+                 bg-black/40 backdrop-blur-sm animate-fade-in"
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
       role="dialog"
       aria-modal="true"
       aria-labelledby="task-form-title"
     >
       {/* Panel */}
-      <div ref={panelRef} className="card shadow-modal w-full max-w-lg animate-scale-in
-                      max-h-[90vh] flex flex-col">
+      <div ref={panelRef} className="card bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 shadow-xl w-full max-w-md animate-scale-in max-h-[85vh] flex flex-col rounded-lg">
 
         {/* ── Header ────────────────────────────────────────────────────── */}
-        <div className="flex items-center justify-between p-6 pb-4 flex-shrink-0">
+        <div className="flex items-center justify-between p-4 pb-3 border-b divider flex-shrink-0">
           <div>
             <h2
               id="task-form-title"
-              className="text-lg font-semibold text-slate-900 dark:text-white"
+              className="text-xs font-semibold text-zinc-900 dark:text-zinc-50"
             >
-              {isEdit ? "Edit Task" : "Create New Task"}
+              {isEdit ? "Edit Task" : "Create Task"}
             </h2>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
-              {isEdit ? "Update the details below" : "Fill in the details to add a task"}
-            </p>
           </div>
           <button
             onClick={handleClose}
             disabled={loading}
-            className="btn-ghost p-2 rounded-xl"
+            className="btn-ghost p-1 rounded-md text-zinc-450 hover:text-zinc-900 dark:hover:text-zinc-100"
             aria-label="Close form"
           >
-            <X size={18} />
+            <X size={14} />
           </button>
         </div>
 
@@ -227,12 +223,11 @@ const TaskForm = () => {
           noValidate
           className="flex flex-col flex-1 overflow-y-auto"
         >
-          <div className="px-6 pb-4 space-y-5 flex-1 overflow-y-auto no-scrollbar">
+          <div className="p-4 space-y-4 flex-1 overflow-y-auto no-scrollbar">
 
             {/* Title */}
             <div>
-              <label htmlFor="task-title" className="block text-sm font-medium
-                text-slate-700 dark:text-slate-300 mb-1.5">
+              <label htmlFor="task-title" className="block text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
                 Title <span className="text-red-500">*</span>
               </label>
               <input
@@ -241,49 +236,51 @@ const TaskForm = () => {
                 type="text"
                 value={fields.title}
                 onChange={handleChange}
-                placeholder="e.g. Design the landing page"
+                placeholder="Task title..."
                 className={`input ${errors.title ? "input-error" : ""}`}
                 maxLength={100}
                 autoFocus
                 aria-invalid={Boolean(errors.title)}
                 aria-describedby={errors.title ? "title-error" : undefined}
               />
-              {errors.title && (
-                <p id="title-error" className="flex items-center gap-1 text-xs text-red-500 mt-1.5">
-                  <AlertCircle size={12} /> {errors.title}
+              <div className="flex items-center justify-between mt-1">
+                {errors.title ? (
+                  <p id="title-error" className="flex items-center gap-1 text-[10px] text-red-550 dark:text-red-400 font-medium">
+                    {errors.title}
+                  </p>
+                ) : (
+                  <span />
+                )}
+                <p className="text-[9px] text-zinc-400 dark:text-zinc-500">
+                  {fields.title.length}/100
                 </p>
-              )}
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 text-right">
-                {fields.title.length}/100
-              </p>
+              </div>
             </div>
 
             {/* Description */}
             <div>
-              <label htmlFor="task-description" className="block text-sm font-medium
-                text-slate-700 dark:text-slate-300 mb-1.5">
-                Description <span className="text-slate-400 text-xs font-normal">(optional)</span>
+              <label htmlFor="task-description" className="block text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
+                Description
               </label>
               <textarea
                 id="task-description"
                 name="description"
                 value={fields.description}
                 onChange={handleChange}
-                placeholder="Add more details about this task…"
+                placeholder="Add details..."
                 rows={3}
                 maxLength={1000}
                 className="input resize-none"
               />
-              <p className="text-xs text-slate-400 dark:text-slate-500 mt-1 text-right">
+              <p className="text-[9px] text-zinc-400 dark:text-zinc-500 mt-1 text-right">
                 {fields.description.length}/1000
               </p>
             </div>
 
             {/* Priority + Status row */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <label htmlFor="task-priority" className="block text-sm font-medium
-                  text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="task-priority" className="block text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
                   Priority
                 </label>
                 <select
@@ -291,7 +288,7 @@ const TaskForm = () => {
                   name="priority"
                   value={fields.priority}
                   onChange={handleChange}
-                  className="select"
+                  className="select h-8 text-xs"
                 >
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
@@ -299,8 +296,7 @@ const TaskForm = () => {
                 </select>
               </div>
               <div>
-                <label htmlFor="task-status" className="block text-sm font-medium
-                  text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="task-status" className="block text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
                   Status
                 </label>
                 <select
@@ -308,7 +304,7 @@ const TaskForm = () => {
                   name="status"
                   value={fields.status}
                   onChange={handleChange}
-                  className="select"
+                  className="select h-8 text-xs"
                 >
                   <option value="Pending">Pending</option>
                   <option value="In Progress">In Progress</option>
@@ -319,9 +315,8 @@ const TaskForm = () => {
 
             {/* Due Date */}
             <div>
-              <label htmlFor="task-due-date" className="block text-sm font-medium
-                text-slate-700 dark:text-slate-300 mb-1.5">
-                Due Date <span className="text-slate-400 text-xs font-normal">(optional)</span>
+              <label htmlFor="task-due-date" className="block text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
+                Due Date
               </label>
               <input
                 id="task-due-date"
@@ -335,8 +330,8 @@ const TaskForm = () => {
                 aria-describedby={errors.dueDate ? "duedate-error" : undefined}
               />
               {errors.dueDate && (
-                <p id="duedate-error" className="flex items-center gap-1 text-xs text-red-500 mt-1.5">
-                  <AlertCircle size={12} /> {errors.dueDate}
+                <p id="duedate-error" className="flex items-center gap-1 text-[10px] text-red-550 dark:text-red-400 mt-1 font-medium">
+                  {errors.dueDate}
                 </p>
               )}
             </div>
@@ -344,13 +339,12 @@ const TaskForm = () => {
           </div>
 
           {/* ── Footer ──────────────────────────────────────────────────── */}
-          <div className="flex items-center justify-end gap-3 px-6 py-4
-                          border-t divider flex-shrink-0">
+          <div className="flex items-center justify-end gap-2 p-3 border-t divider flex-shrink-0 bg-zinc-50/50 dark:bg-zinc-900/10">
             <button
               type="button"
               onClick={handleClose}
               disabled={loading}
-              className="btn-secondary"
+              className="btn-secondary h-8 py-0 px-3.5"
             >
               Cancel
             </button>
@@ -358,14 +352,14 @@ const TaskForm = () => {
               id="task-form-submit"
               type="submit"
               disabled={loading}
-              className="btn-primary min-w-[130px]"
+              className="btn-primary min-w-[100px] h-8 py-0 px-3.5"
             >
               {loading ? (
                 <LoadingSpinner size="sm" />
               ) : isEdit ? (
-                <><Save size={15} /> Update Task</>
+                <><Save size={12} /> Update</>
               ) : (
-                <><Plus size={15} /> Create Task</>
+                <><Plus size={12} /> Create</>
               )}
             </button>
           </div>

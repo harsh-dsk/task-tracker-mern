@@ -34,47 +34,45 @@ const TaskCard = memo(({ task }) => {
 
   return (
     <article
-      className="card card-hover flex flex-col gap-4 p-5 group animate-fade-in"
+      className="card card-hover flex flex-col gap-2.5 p-3 group animate-fade-in"
       aria-label={`Task: ${task.title}`}
     >
       {/* ── Top row: badges + actions ──────────────────────────────────── */}
-      <div className="flex items-start justify-between gap-2">
+      <div className="flex items-center justify-between gap-2">
         {/* Badges */}
-        <div className="flex items-center flex-wrap gap-1.5">
+        <div className="flex items-center flex-wrap gap-1">
           {/* Priority */}
           <span className={`badge ${getPriorityClasses(task.priority)}`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${priorityConfig[task.priority]?.dot}`} />
+            <span className={`w-1 h-1 rounded-full ${priorityConfig[task.priority]?.dot}`} />
             {task.priority}
           </span>
           {/* Status */}
           <span className={`badge ${getStatusClasses(task.status)}`}>
-            <span className={`w-1.5 h-1.5 rounded-full ${statusConfig[task.status]?.dot}`} />
+            <span className={`w-1 h-1 rounded-full ${statusConfig[task.status]?.dot}`} />
             {task.status}
           </span>
         </div>
 
         {/* Action buttons — always visible on mobile, hover-only on desktop */}
-        <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100
-                        transition-opacity duration-200 flex-shrink-0">
+        <div className="flex items-center gap-0.5 opacity-100 sm:opacity-0 sm:group-hover:opacity-100
+                        transition-opacity duration-150 flex-shrink-0">
           <button
             id={`edit-task-${task._id}`}
             onClick={handleEdit}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-primary-600
-                       hover:bg-primary-50 dark:hover:bg-primary-900/30
-                       dark:hover:text-primary-400 transition-colors"
+            className="p-1 rounded text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100
+                       hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             aria-label={`Edit ${task.title}`}
           >
-            <Pencil size={14} />
+            <Pencil size={12} />
           </button>
           <button
             id={`delete-task-${task._id}`}
             onClick={handleDelete}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-red-600
-                       hover:bg-red-50 dark:hover:bg-red-900/30
-                       dark:hover:text-red-400 transition-colors"
+            className="p-1 rounded text-zinc-400 hover:text-red-500 dark:hover:text-red-400
+                       hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
             aria-label={`Delete ${task.title}`}
           >
-            <Trash2 size={14} />
+            <Trash2 size={12} />
           </button>
         </div>
       </div>
@@ -82,15 +80,15 @@ const TaskCard = memo(({ task }) => {
       {/* ── Title ─────────────────────────────────────────────────────── */}
       <div className="flex-1">
         <h3
-          className={`font-semibold text-base leading-snug mb-1.5
+          className={`font-medium text-xs leading-snug mb-1
                       ${task.status === "Completed"
-                        ? "line-through text-slate-400 dark:text-slate-500"
-                        : "text-slate-900 dark:text-white"}`}
+                        ? "line-through text-zinc-400 dark:text-zinc-500"
+                        : "text-zinc-900 dark:text-zinc-100"}`}
         >
           {task.title}
         </h3>
         {task.description && (
-          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed
+          <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-normal
                         line-clamp-2">
             {task.description}
           </p>
@@ -98,26 +96,17 @@ const TaskCard = memo(({ task }) => {
       </div>
 
       {/* ── Footer: dates ─────────────────────────────────────────────── */}
-      <div className="flex flex-col gap-1.5 pt-3 border-t divider">
+      <div className="flex items-center justify-between pt-2 border-t divider text-[10px] text-zinc-400 dark:text-zinc-500">
         {/* Due date */}
-        {task.dueDate && (
-          <div className={`flex items-center gap-1.5 text-xs font-medium
-                          ${overdue
-                            ? "text-red-500 dark:text-red-400"
-                            : "text-slate-400 dark:text-slate-500"}`}
-          >
-            {overdue
-              ? <AlertCircle size={13} className="flex-shrink-0" />
-              : <Calendar    size={13} className="flex-shrink-0" />
-            }
-            <span>{overdue ? "Overdue · " : "Due · "}{formatDate(task.dueDate)}</span>
-          </div>
+        {task.dueDate ? (
+          <span className={overdue ? "text-red-500 font-medium" : ""}>
+            {overdue ? "Overdue" : "Due"} · {formatDate(task.dueDate)}
+          </span>
+        ) : (
+          <span className="italic">No due date</span>
         )}
         {/* Created at */}
-        <div className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-          <Clock size={12} className="flex-shrink-0" />
-          <span>Created {formatDate(task.createdAt)}</span>
-        </div>
+        <span>{formatDate(task.createdAt)}</span>
       </div>
     </article>
   );

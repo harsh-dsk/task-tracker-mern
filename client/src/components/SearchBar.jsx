@@ -34,17 +34,17 @@ const SearchBar = () => {
   return (
     <div className="relative flex-1 min-w-0">
       <Search
-        size={16}
-        className="absolute left-3.5 top-1/2 -translate-y-1/2
-                   text-slate-400 dark:text-slate-500 pointer-events-none"
+        size={13}
+        className="absolute left-3 top-1/2 -translate-y-1/2
+                   text-zinc-400 dark:text-zinc-500 pointer-events-none"
       />
       <input
         id="task-search-input"
         type="text"
         value={local}
         onChange={(e) => setLocal(e.target.value)}
-        placeholder="Search tasks by title or description…"
-        className="input pl-9 pr-9"
+        placeholder="Search tasks..."
+        className="input pl-8 pr-8"
         aria-label="Search tasks"
       />
       {local && (
