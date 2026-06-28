@@ -40,7 +40,9 @@ const getAllTasks = async (req, res, next) => {
 
     // ── Search: regex match on title or description (case-insensitive) ─────
     if (search && search.trim() !== "") {
-      const regex = new RegExp(search.trim(), "i");
+      // Escape special regex characters to prevent ReDoS attacks
+      const escaped = search.trim().slice(0, 200).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(escaped, "i");
       query.$or = [{ title: regex }, { description: regex }];
     }
 

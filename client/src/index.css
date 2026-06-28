@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans bg-zinc-50 text-zinc-900 transition-colors duration-200;
+  }
+
+  .dark body {
+    @apply bg-zinc-950 text-zinc-100;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-zinc-200 dark:bg-zinc-800 rounded-sm; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-zinc-300 dark:bg-zinc-700; }
+
+  *:focus-visible {
+    @apply outline-none ring-1 ring-zinc-400 dark:ring-zinc-600 ring-offset-0;
+  }
+
+  /* Toast CSS variables — consumed by App.jsx Toaster */
+  :root {
+    --toast-bg: #ffffff;
+    --toast-color: #09090b;
+  }
+  .dark {
+    --toast-bg: #18181b;
+    --toast-color: #fafafa;
+  }
+}
+
+@layer components {
+  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 font-medium rounded-md
+           px-3 py-1.5 text-xs transition-all duration-150 cursor-pointer
+           disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+  .btn-primary {
+    @apply btn bg-zinc-900 text-white hover:bg-zinc-800 active:bg-zinc-950
+           dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:active:bg-zinc-300
+           border border-transparent;
+  }
+  .btn-secondary {
+    @apply btn bg-white dark:bg-zinc-900 text-zinc-750 dark:text-zinc-300
+           border border-zinc-250 dark:border-zinc-800
+           hover:bg-zinc-50 dark:hover:bg-zinc-800/50 hover:text-zinc-950 dark:hover:text-zinc-100;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 active:bg-red-850 border border-transparent;
+  }
+  .btn-ghost {
+    @apply btn text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-900
+           hover:text-zinc-950 dark:hover:text-zinc-200;
+  }
+
+  /* ── Form controls ────────────────────────────────────────────────────── */
+  .input {
+    @apply w-full px-3 py-2 rounded-md text-xs
+           bg-white dark:bg-zinc-900/50
+           border border-zinc-250 dark:border-zinc-800
+           text-zinc-900 dark:text-zinc-100
+           placeholder:text-zinc-400 dark:placeholder:text-zinc-500
+           transition-all duration-150
+           focus:outline-none focus:ring-1 focus:ring-zinc-400 dark:focus:ring-zinc-600
+           focus:border-transparent;
+  }
+  .input-error {
+    @apply border-red-500 focus:ring-red-500;
+  }
+
+  /* ── Card ─────────────────────────────────────────────────────────────── */
+  .card {
+    @apply bg-white dark:bg-zinc-900/20
+           border border-zinc-200 dark:border-zinc-800
+           rounded-md transition-all duration-150;
+  }
+  .card-hover {
+    @apply hover:border-zinc-350 dark:hover:border-zinc-700 hover:bg-zinc-50/30 dark:hover:bg-zinc-900/40;
+  }
+
+  /* ── Badge ────────────────────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md
+           text-[11px] font-medium tracking-normal;
+  }
+
+  /* ── Glass overlay ────────────────────────────────────────────────────── */
+  .glass {
+    @apply backdrop-blur-md bg-white/90 dark:bg-zinc-950/90;
+  }
+
+  /* ── Divider ──────────────────────────────────────────────────────────── */
+  .divider { @apply border-zinc-200/60 dark:border-zinc-800/80; }
+
+  /* ── Select ───────────────────────────────────────────────────────────── */
+  .select {
+    @apply input appearance-none cursor-pointer pr-8 bg-[right_0.6rem_center]
+           bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-size: 12px;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}

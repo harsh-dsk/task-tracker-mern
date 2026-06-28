@@ -20,6 +20,8 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
 
 
 
@@ -53,6 +55,19 @@ app.use(
     credentials: true,
   })
 );
+
+// ── Security headers (helmet) ─────────────────────────────────────────────────
+app.use(helmet());
+
+// ── Rate limiting — 100 requests per 15 minutes per IP ───────────────────────
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: "Too many requests, please try again later." },
+});
+app.use("/api", limiter);
 
 // ── Body parsers ─────────────────────────────────────────────────────────────
 app.use(express.json({ limit: "10kb" })); // Guard against large payloads

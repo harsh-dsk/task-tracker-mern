@@ -1,5 +1,12 @@
 {
-  "dependencies": {
-    "mongodb": "^7.4.0"
-  }
+  "name": "taskflow-mern",
+  "version": "1.0.0",
+  "description": "TaskFlow — Full-stack MERN Task Manager",
+  "scripts": {
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "start:server": "cd server && npm start",
+    "install:all": "npm install --prefix server && npm install --prefix client"
+  },
+  "license": "MIT"
 }
